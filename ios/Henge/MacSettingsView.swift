@@ -180,7 +180,7 @@ struct MacSettingsView: View {
     private func row(_ title: String, symbol: String?, tint: Color, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack {
-                Text(title).font(.system(size: 16)).foregroundStyle(tint)
+                Text(title.loc).font(.system(size: 16)).foregroundStyle(tint)
                 Spacer()
                 if let symbol { Image(systemName: symbol).foregroundStyle(tint) }
             }

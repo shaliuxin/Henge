@@ -472,10 +472,10 @@ struct SessionView: View {
 
     private var phase: String {
         switch state {
-        case 0: return error == nil ? "Starting…" : "Not started"
-        case 1: return userCode ? "macOS is running" : "Booting"
-        case 3: return "Finishing shutdown…"
-        default: return "Stopped (\(String(cString: henge_vm_exit_reason())))"
+        case 0: return error == nil ? "Starting…".loc : "Not started".loc
+        case 1: return userCode ? "macOS is running".loc : "Booting".loc
+        case 3: return "Finishing shutdown…".loc
+        default: return "Stopped (%@)".locFormat(String(cString: henge_vm_exit_reason()))
         }
     }
 
@@ -560,11 +560,11 @@ struct SessionView: View {
 
     private static func thermalLabel(_ state: ProcessInfo.ThermalState) -> String {
         switch state {
-        case .nominal: return "Normal"
-        case .fair: return "Warm"
-        case .serious: return "Hot — performance reduced"
-        case .critical: return "Critical"
-        @unknown default: return "Unknown"
+        case .nominal: return "Normal".loc
+        case .fair: return "Warm".loc
+        case .serious: return "Hot — performance reduced".loc
+        case .critical: return "Critical".loc
+        @unknown default: return "Unknown".loc
         }
     }
 

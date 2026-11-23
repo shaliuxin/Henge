@@ -35,9 +35,9 @@ enum DeskAppearance: String, CaseIterable, Identifiable {
     var id: String { rawValue }
     var title: String {
         switch self {
-        case .system: return "System"
-        case .light: return "Light"
-        case .dark: return "Dark"
+        case .system: return "System".loc
+        case .light: return "Light".loc
+        case .dark: return "Dark".loc
         }
     }
     var style: UIUserInterfaceStyle {
@@ -119,7 +119,7 @@ struct DeskHeading: View {
     let title: String
     init(_ title: String) { self.title = title }
     var body: some View {
-        Text(title)
+        Text(title.loc)
             .font(.system(size: 14, weight: .semibold))
             .foregroundStyle(Desk.dim)
             .padding(.horizontal, 18)

@@ -75,12 +75,12 @@ struct HomeView: View {
         }
         if installer.busy {
             Button { tab = .install } label: {
-                NoticeRow(symbol: "arrow.down.circle.fill", text: "Installing \(installer.machineName)…", trailing: "See")
+                NoticeRow(symbol: "arrow.down.circle.fill", text: "Installing %@…".locFormat(installer.machineName), trailing: "See")
             }
         }
         if let name = machines.importing {
             NoticeRow(symbol: "square.and.arrow.down.fill",
-                      text: machines.unpacked > 0 ? String(format: "Unpacking %@'s disk… %.0f%%", name, machines.unpacked * 100) : "Bringing in \(name)…")
+                      text: machines.unpacked > 0 ? "Unpacking %@'s disk… %.0f%%".locFormat(name, machines.unpacked * 100) : "Bringing in %@…".locFormat(name))
         }
         if let error = machines.lastError {
             NoticeRow(symbol: "exclamationmark.triangle.fill", text: error, tint: Desk.bad)
@@ -139,9 +139,9 @@ extension VirtualMac {
     }
 
     var lastUsedText: String {
-        guard let lastUsed else { return "Never" }
-        if Calendar.current.isDateInToday(lastUsed) { return "Today" }
-        if Calendar.current.isDateInYesterday(lastUsed) { return "Yesterday" }
+        guard let lastUsed else { return "Never".loc }
+        if Calendar.current.isDateInToday(lastUsed) { return "Today".loc }
+        if Calendar.current.isDateInYesterday(lastUsed) { return "Yesterday".loc }
         return lastUsed.formatted(.dateTime.month(.abbreviated).day())
     }
 
@@ -238,7 +238,7 @@ private struct FactTile: View {
     let value: String
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
-            Text(title).font(.system(size: 13)).foregroundStyle(Desk.dim)
+            Text(title.loc).font(.system(size: 13)).foregroundStyle(Desk.dim)
             Text(value).font(.system(size: 21, weight: .bold)).foregroundStyle(Desk.text).lineLimit(1).minimumScaleFactor(0.7)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -256,9 +256,9 @@ struct NoticeRow: View {
     var body: some View {
         HStack(spacing: 11) {
             Image(systemName: symbol).foregroundStyle(tint)
-            Text(text).font(.system(size: 15)).foregroundStyle(Desk.text).multilineTextAlignment(.leading)
+            Text(text.loc).font(.system(size: 15)).foregroundStyle(Desk.text).multilineTextAlignment(.leading)
             Spacer(minLength: 4)
-            if let trailing { Text(trailing).font(.system(size: 15, weight: .semibold)).foregroundStyle(Desk.accentLight) }
+            if let trailing { Text(trailing.loc).font(.system(size: 15, weight: .semibold)).foregroundStyle(Desk.accentLight) }
         }
         .padding(14)
         .deskCard()

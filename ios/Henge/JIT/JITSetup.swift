@@ -16,11 +16,11 @@ enum JITMethod: String, CaseIterable, Identifiable {
     var id: String { rawValue }
     var title: String {
         switch self {
-        case .automatic: return "Automatic"
-        case .stikDebug: return "StikDebug"
-        case .trollStore: return "TrollStore"
-        case .jailbreak: return "Jailbreak (Dopamine)"
-        case .builtIn: return "Built-in StikJIT"
+        case .automatic: return "Automatic".loc
+        case .stikDebug: return "StikDebug".loc
+        case .trollStore: return "TrollStore".loc
+        case .jailbreak: return "Jailbreak (Dopamine)".loc
+        case .builtIn: return "Built-in StikJIT".loc
         }
     }
 }
@@ -130,9 +130,9 @@ final class JITCoordinator: ObservableObject {
 
     var automaticDescription: String {
         switch resolvedMethod {
-        case .stikDebug: return "StikDebug is installed, so Henge will open it."
-        case .trollStore: return "TrollStore is installed, so Henge will ask it to enable JIT."
-        case .jailbreak: return "This device is jailbroken, so JIT comes from the jailbreak's Allow JIT in Apps setting."
+        case .stikDebug: return "StikDebug is installed, so Henge will open it.".loc
+        case .trollStore: return "TrollStore is installed, so Henge will ask it to enable JIT.".loc
+        case .jailbreak: return "This device is jailbroken, so JIT comes from the jailbreak's Allow JIT in Apps setting.".loc
         default: return hasPairing
             ? "Henge will use its paired built-in helper."
             : "StikDebug, TrollStore and a jailbreak were not found, so Henge will use its built-in helper."
@@ -520,7 +520,7 @@ enum LocalDevVPN {
         }
         return false
     }
-    static var actionTitle: String { isInstalled ? "Connect LocalDevVPN" : "Get LocalDevVPN" }
+    static var actionTitle: String { isInstalled ? "Connect LocalDevVPN".loc : "Get LocalDevVPN".loc }
 
     @MainActor static func open() {
         let installed = isInstalled

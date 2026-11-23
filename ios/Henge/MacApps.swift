@@ -40,20 +40,20 @@ struct MacApp: Identifiable, Hashable {
     var verdict: (title: String, detail: String) {
         switch UInt32(kind) {
         case HENGE_TL_PROGRAM.rawValue:
-            return ("Runs without macOS (experimental)",
-                    "A program without windows: Henge loads it into itself and runs it, with no Mac started.")
+            return ("Runs without macOS (experimental)".loc,
+                    "A program without windows: Henge loads it into itself and runs it, with no Mac started.".loc)
         case HENGE_TL_SWIFTUI.rawValue:
-            return ("Not yet: a SwiftUI app",
-                    "iOS has the SwiftUI it calls, but starting it as an app inside Henge isn't done yet. It runs in a Mac.")
+            return ("Not yet: a SwiftUI app".loc,
+                    "iOS has the SwiftUI it calls, but starting it as an app inside Henge isn't done yet. It runs in a Mac.".loc)
         case HENGE_TL_CATALYST.rawValue:
-            return ("Not yet: a Mac Catalyst app",
-                    "It's built from an iPad app's code, so most of what it calls exists on iOS, but starting it inside Henge isn't done yet. It runs in a Mac.")
+            return ("Not yet: a Mac Catalyst app".loc,
+                    "It's built from an iPad app's code, so most of what it calls exists on iOS, but starting it inside Henge isn't done yet. It runs in a Mac.".loc)
         case HENGE_TL_APPKIT.rawValue:
-            return ("Experimental: an AppKit app",
-                    "It draws its windows with AppKit, which iOS doesn't have; Henge stands in its own. Made for browsers built on Chromium (Chromium, apps built with Electron or CEF); others may stop early.")
+            return ("Experimental: an AppKit app".loc,
+                    "It draws its windows with AppKit, which iOS doesn't have; Henge stands in its own. Made for browsers built on Chromium (Chromium, apps built with Electron or CEF); others may stop early.".loc)
         default:
-            return ("Intel only",
-                    "It has no Apple silicon code. A Mac with Rosetta runs it; Henge can't yet.")
+            return ("Intel only".loc,
+                    "It has no Apple silicon code. A Mac with Rosetta runs it; Henge can't yet.".loc)
         }
     }
 

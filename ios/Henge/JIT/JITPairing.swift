@@ -79,7 +79,7 @@ import UserNotifications
         guard Self.isSupported, !active, session == nil else { return }
         var error: UnsafeMutablePointer<CChar>?
         guard let session = husk_rppairing_new(Self.hostName, &error) else {
-            fail(Self.take(error) ?? "Henge could not open its pairing port.")
+            fail(Self.take(error) ?? "Henge could not open its pairing port.".loc)
             return
         }
         self.session = session
@@ -140,12 +140,12 @@ import UserNotifications
         log("code shown")
         #if compiler(>=6.2)
         if #available(iOS 26.0, *), let task = continued as? BGContinuedProcessingTask {
-            task.updateTitle("Pairing code \(pin)", subtitle: "Enter it on this \(Self.deviceKind) to pair with Henge")
+            task.updateTitle("Pairing code %@".locFormat(pin), subtitle: "Enter it on this %@ to pair with Henge".locFormat(Self.deviceKind))
             task.progress.completedUnitCount = 1
         }
         #endif
         if UIApplication.shared.applicationState != .active {
-            notify("Henge pairing code: \(pin)", body: "Enter this code on your \(Self.deviceKind) to finish pairing.")
+            notify("Henge pairing code: %@".locFormat(pin), body: "Enter this code on your %@ to finish pairing.".locFormat(Self.deviceKind))
         }
     }
 
@@ -163,16 +163,16 @@ import UserNotifications
                 phase = .paired(device: device ?? "this \(Self.deviceKind)")
                 log("paired")
                 if UIApplication.shared.applicationState != .active {
-                    notify("Paired with Henge", body: "Return to Henge to finish setting up JIT.")
+                    notify("Paired with Henge".loc, body: "Return to Henge to finish setting up JIT.".loc)
                 }
                 endBackground(success: true)
             } catch {
-                fail("Pairing finished, but Henge could not save the pairing file.")
+                fail("Pairing finished, but Henge could not save the pairing file.".loc)
             }
         case 2:
             endBackground(success: false)
         default:
-            fail(message.map { "Pairing failed: \($0)" } ?? "Pairing failed. Try again.")
+            fail(message.map { "Pairing failed: %@".locFormat($0) } ?? "Pairing failed. Try again.".loc)
         }
     }
 
@@ -224,7 +224,7 @@ import UserNotifications
         guard active else { return }
         log("advertising failed error=\(error)")
         fail(error == DNSServiceErrorType(kDNSServiceErr_PolicyDenied)
-             ? "Henge needs Local Network access to pair. Allow it in Settings › Apps › Henge, then try again."
+             ? "Henge needs Local Network access to pair. Allow it in Settings › Apps › Henge, then try again.".loc
              : "Henge could not announce itself on the local network. Check that Wi-Fi is on, then try again.")
     }
 
@@ -290,7 +290,7 @@ import UserNotifications
         continued = task
         task.progress.totalUnitCount = 2
         if case .pin(let pin) = phase {
-            task.updateTitle("Pairing code \(pin)", subtitle: "Enter it on this \(Self.deviceKind) to pair with Henge")
+            task.updateTitle("Pairing code %@".locFormat(pin), subtitle: "Enter it on this %@ to pair with Henge".locFormat(Self.deviceKind))
             task.progress.completedUnitCount = 1
         }
         task.expirationHandler = {

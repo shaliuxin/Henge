@@ -104,7 +104,7 @@ final class RangedDownload: NSObject, URLSessionDataDelegate {
                 finish(nil)
                 return
             default:
-                throw NSError(domain: "Henge", code: 3, userInfo: [NSLocalizedDescriptionKey: "Apple's server answered \(status)."])
+                throw NSError(domain: "Henge", code: 3, userInfo: [NSLocalizedDescriptionKey: "Apple's server answered %@.".locFormat(status)])
             }
             let h = try FileHandle(forWritingTo: part)
             try h.truncate(atOffset: UInt64(have))
@@ -135,7 +135,7 @@ final class RangedDownload: NSObject, URLSessionDataDelegate {
         if let failure { finish(failure); return }
         if let error { finish(error); return }
         if total > 0 && have != total {
-            finish(NSError(domain: "Henge", code: 7, userInfo: [NSLocalizedDescriptionKey: "The download ended early (\(have) of \(total) bytes)."]))
+            finish(NSError(domain: "Henge", code: 7, userInfo: [NSLocalizedDescriptionKey: "The download ended early (%lld of %lld bytes).".locFormat(have, total)]))
             return
         }
         finish(nil)

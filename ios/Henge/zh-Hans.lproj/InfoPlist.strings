@@ -1,0 +1,4 @@
+/* Info.plist 权限说明 — 简体中文 */
+
+"NSCameraUsageDescription" = "Henge 可将音量键用作触控板的鼠标按键。接收这些按键需要相机保持开启；不会录制、保存或显示任何视频。";
+"NSLocalNetworkUsageDescription" = "Henge 使用本地网络与这台 iPhone 配对以启用 JIT，无需电脑。";

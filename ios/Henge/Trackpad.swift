@@ -195,7 +195,7 @@ struct MouseButton: View {
     @State private var down = false
 
     var body: some View {
-        Text(title)
+        Text(title.loc)
             .font(.system(size: 15))
             .foregroundStyle(down ? Desk.text : Desk.dim)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
