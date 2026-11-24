@@ -69,6 +69,9 @@ struct RootView: View {
             }
         }
         .background(WindowStyle(style: running != nil ? .dark : appearance.style))
+        // SwiftUI resolves Text/Button/Label literals through this environment locale,
+        // not through Bundle.main. It is what actually switches the literal strings.
+        .environment(\.locale, language.language.locale)
         // Rebuild the tree when the language changes so every LocalizedStringKey re-resolves.
         .id(language.language)
         .sheet(isPresented: $jit.showSetup) { JITSetupFlow() }

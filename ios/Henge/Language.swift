@@ -13,6 +13,17 @@ enum AppLanguage: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
+    /// The locale SwiftUI uses to resolve `LocalizedStringKey` (Text/Button/Label literals).
+    /// SwiftUI reads the `\.locale` environment, not `Bundle.main`, so this must be set
+    /// on the root view for the literal strings to follow the manual choice.
+    var locale: Locale {
+        switch self {
+        case .system: return .current
+        case .simplifiedChinese: return Locale(identifier: "zh-Hans")
+        case .english: return Locale(identifier: "en")
+        }
+    }
+
     /// Resolved as a `LocalizedStringKey` in the picker, so the option names follow the current language.
     var titleKey: LocalizedStringKey {
         switch self {
