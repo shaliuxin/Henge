@@ -8,6 +8,8 @@ struct HengeApp: App {
     @Environment(\.scenePhase) private var scenePhase
 
     init() {
+        // Apply the saved interface language before the first view renders.
+        _ = LanguageManager.shared
         // Order matters: HengeLog takes over stderr, so the engine's and the JIT
         // allocator's first lines land in Documents/henge.log too.
         HengeLog.start()
@@ -40,6 +42,7 @@ struct RootView: View {
 
     @ObservedObject private var machines = Machines.shared
     @ObservedObject private var jit = JITCoordinator.shared
+    @ObservedObject private var language = LanguageManager.shared
     @Environment(\.scenePhase) private var scenePhase
     @State private var running: VirtualMac?
     @State private var tab = Tab.macs
@@ -66,6 +69,8 @@ struct RootView: View {
             }
         }
         .background(WindowStyle(style: running != nil ? .dark : appearance.style))
+        // Rebuild the tree when the language changes so every LocalizedStringKey re-resolves.
+        .id(language.language)
         .sheet(isPresented: $jit.showSetup) { JITSetupFlow() }
         .task(id: scenePhase) {
             guard scenePhase == .active else { return }

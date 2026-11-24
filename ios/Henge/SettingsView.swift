@@ -16,6 +16,7 @@ struct SettingsView: View {
     @AppStorage(EngineTuning.superblocksKey) private var superblocks = false
     @AppStorage(JITBootstrap.codeCacheKey) private var codeCacheMB = JITBootstrap.defaultCodeCacheMB
     @AppStorage(DeskAppearance.key) private var appearance = DeskAppearance.system
+    @ObservedObject private var language = LanguageManager.shared
     @AppStorage(InstantResume.key) private var instantResume = false
     @AppStorage(MacAppsFeature.key) private var macApps = false
 
@@ -142,6 +143,14 @@ struct SettingsView: View {
                     }
                     .pickerStyle(.segmented)
                     Text("System follows the \(Device.name)'s Light or Dark setting. Henge stays dark while a Mac is running.")
+                        .font(.footnote).foregroundStyle(.secondary)
+                }
+                .listRowBackground(Desk.card)
+                Section("Language") {
+                    Picker("Language", selection: $language.language) {
+                        ForEach(AppLanguage.allCases) { Text($0.titleKey).tag($0) }
+                    }
+                    Text("The language changes at once, without restarting Henge. System follows the device language.")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
                 .listRowBackground(Desk.card)

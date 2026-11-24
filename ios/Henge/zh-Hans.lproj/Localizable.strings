@@ -285,6 +285,12 @@
 "Henge needs Local Network access to pair. Allow it in Settings › Apps › Henge, then try again." = "Henge 需要本地网络访问权限才能配对。请在“设置 › 应用 › Henge”中允许，然后重试。";
 "Delete the download after" = "安装后删除下载文件";
 "Use the jailbreak" = "使用越狱";
+
+/* ===== 手动语言选择 ===== */
+"Language" = "语言";
+"Chinese (Simplified)" = "简体中文";
+"English" = "英语";
+"The language changes at once, without restarting Henge. System follows the device language." = "语言会立即更改，无需重启 Henge。“跟随系统”使用设备的语言设置。";
 "Choose another file" = "选择其他文件";
 "Choose pairing file" = "选择配对文件";
 "Connect LocalDevVPN" = "连接 LocalDevVPN";

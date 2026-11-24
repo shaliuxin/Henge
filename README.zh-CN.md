@@ -24,7 +24,7 @@
   <a href="README.md">English</a>
 </p>
 
-> **关于本分支**：这是 [Leviidev/Henge](https://github.com/Leviidev/Henge) 的简体中文分支。界面已全面中文化，并会根据系统语言自动切换：系统为简体中文时显示中文，其他语言回退为英文。功能与原项目保持一致。本分支的 IPA 与 TrollStore 版 `.tipa` 在[发布页面](https://github.com/shaliuxin/Henge/releases)提供。
+> **关于本分支**：这是 [Leviidev/Henge](https://github.com/Leviidev/Henge) 的简体中文分支。界面已全面中文化，默认随系统语言自动切换：系统为简体中文时显示中文，其他语言回退为英文。也可在 **设置 › 语言** 中手动选择「跟随系统 / 简体中文 / English」，选择后立即生效，无需重启。功能与原项目保持一致。本分支的 IPA 与 TrollStore 版 `.tipa` 在[发布页面](https://github.com/shaliuxin/Henge/releases)提供。
 
 下载 macOS，安装到设备上，即可使用。
 
