@@ -7,6 +7,8 @@
 <p align="center">macOS on your iPhone and iPad.</p>
 
 <p align="center">
+  <a href="README.zh-CN.md">简体中文</a>
+  ·
   <a href="#install">Install</a>
   ·
   <a href="docs/architecture.md">How it works</a>
