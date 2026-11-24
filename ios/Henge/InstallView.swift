@@ -162,7 +162,7 @@ struct InstallView: View {
 
     // MARK: Going
 
-    private static let stages = ["Download", "Start installer", "Write macOS", "Check macOS", "Finish"]
+    private static let stages = ["Download", "Start installer", "Write macOS", "Check macOS", "Finish"].map { $0.loc }
 
     private var stage: Int {
         switch installer.phase {

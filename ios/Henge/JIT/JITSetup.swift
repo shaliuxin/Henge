@@ -134,8 +134,8 @@ final class JITCoordinator: ObservableObject {
         case .trollStore: return "TrollStore is installed, so Henge will ask it to enable JIT.".loc
         case .jailbreak: return "This device is jailbroken, so JIT comes from the jailbreak's Allow JIT in Apps setting.".loc
         default: return hasPairing
-            ? "Henge will use its paired built-in helper."
-            : "StikDebug, TrollStore and a jailbreak were not found, so Henge will use its built-in helper."
+            ? "Henge will use its paired built-in helper.".loc
+            : "StikDebug, TrollStore and a jailbreak were not found, so Henge will use its built-in helper.".loc
         }
     }
 

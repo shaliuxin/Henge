@@ -291,6 +291,33 @@
 "Chinese (Simplified)" = "简体中文";
 "English" = "英语";
 "The language changes at once, without restarting Henge. System follows the device language." = "语言会立即更改，无需重启 Henge。“跟随系统”使用设备的语言设置。";
+
+/* ===== 会话页触控板提示 ===== */
+"Drag" = "拖动";
+"to move" = "来移动";
+"Tap" = "轻点";
+"to click" = "来单击";
+"Hold, then drag" = "按住后拖动";
+"to grab" = "来抓取";
+"Two fingers" = "双指";
+"to scroll" = "来滚动";
+
+/* ===== 安装步骤与错误 ===== */
+"Download" = "下载";
+"Start installer" = "启动安装程序";
+"Write macOS" = "写入 macOS";
+"Check macOS" = "检查 macOS";
+"Finish" = "完成";
+"Henge will use its paired built-in helper." = "Henge 将使用已配对的内置辅助程序。";
+"%@ is installed on %@. Quit Henge (swipe it away) and open it again, then tap Start." = "%@ 已安装在 %@ 上。请退出 Henge（上滑关闭）后重新打开，然后点按“启动”。";
+"This install needs about %@ free; this %@ has %@." = "此安装大约需要 %@ 可用空间；这台 %@ 有 %@。";
+"The download kept failing." = "下载持续失败。";
+"Cannot create the disk." = "无法创建磁盘。";
+"Cannot create the auxiliary storage." = "无法创建辅助存储。";
+"Turn on JIT first: the installer runs the Mac's own restore system, which needs it." = "请先开启 JIT：安装程序会运行 Mac 自身的恢复系统，它需要 JIT。";
+"Installing needs a few more GB of free storage for the Mac's memory." = "安装需要更多可用存储空间来容纳 Mac 的内存。";
+"The restore failed. The log (Settings, or Documents/henge.log) says why." = "恢复失败。日志（“设置”或 Documents/henge.log）中有原因。";
+"The machine stopped during the restore (%@)." = "恢复过程中机器停止了（%@）。";
 "Choose another file" = "选择其他文件";
 "Choose pairing file" = "选择配对文件";
 "Connect LocalDevVPN" = "连接 LocalDevVPN";

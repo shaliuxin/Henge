@@ -343,7 +343,7 @@ struct SessionView: View {
     }
 
     private func hint(_ strong: String, _ rest: String) -> some View {
-        (Text(strong).foregroundColor(Desk.dim).fontWeight(.semibold) + Text(" \(rest)").foregroundColor(Desk.faint))
+        (Text(strong.loc).foregroundColor(Desk.dim).fontWeight(.semibold) + Text(" \(rest.loc)").foregroundColor(Desk.faint))
             .font(.system(size: 15))
     }
 
